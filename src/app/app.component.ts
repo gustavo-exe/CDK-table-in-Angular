@@ -25,7 +25,11 @@ export class AppComponent  implements OnInit{
     .subscribe(users => {
       this.users.data = users;
       this.users.paginator = this.paginator;
-
     });
+  }
+
+  searchByAll(value:string){
+    console.log(value.trim().toLowerCase())
+    this.users.filter = value.trim().toLowerCase();
   }
 }
