@@ -35,3 +35,8 @@
 	<tr cdk-row  *cdkRowDef="let element; columns: columnsToDisplay;"></tr>
 
 </table>
+
+<app-paginator
+  #pagination
+  [pageSize]="pageSize"
+></app-paginator>

@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CdkTableModule } from "@angular/cdk/table";
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
+import { PaginatorModule } from './shared/paginator/paginator.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     FormsModule,
-    CdkTableModule
+    CdkTableModule,
+    PaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
