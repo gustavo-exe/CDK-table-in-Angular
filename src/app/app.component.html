@@ -2,6 +2,32 @@
   <input type="text" placeholder="Search by all"  #textInput  (keyup)="searchByAll(textInput.value)">
 </div>
 
+
+<section  class="grid grid-cols-2 my-6 mx-4" >
+  <div>
+    <p>Ciudades  <a (click)="selectedCiudades = []" style="color: red;" >clear</a> </p>
+    <ng-container *ngFor="let item of ciudades" >
+      <div  class="flex items-center gap-4" >
+        <input (click)="updateFilter('city', item.value)"  type="checkbox" name="city" id="city">
+        <p>{{item.value}}</p>
+      </div>
+    </ng-container>
+    <p>{{selectedCiudades | json}}</p>
+  </div>
+
+  <div>
+	<p>Zip codes  <a style="color: red;"  (click)="selectedCodes = []" >clear</a> </p>
+    <ng-container *ngFor="let item of zipCodes" >
+      <div  class="flex items-center gap-4" >
+        <input (click)="updateFilter('zipcode', item.value)" type="checkbox" name="zipcode" id="zipcode">
+        <p>{{item.value}}</p>
+      </div>
+    </ng-container>
+
+    <p>{{selectedCodes | json}}</p>
+  </div>
+</section>
+
 <table cdk-table [dataSource]="users" >
 	<ng-container cdkColumnDef="id">
 		<th *cdkHeaderCellDef mat-sort-header>id</th>
