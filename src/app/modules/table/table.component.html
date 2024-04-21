@@ -1,45 +1,46 @@
-<div class="border px-4 py-2 m-4 w-fit" >
-  <input type="text" placeholder="Search by all"  #textInput  (keyup)="searchByAll(textInput.value)">
+<div class="border px-4 py-2 m-4  rounded-xl focus-within:border-gray-400" >
+  <input class="outline-none w-full " type="text" placeholder="Search by all"  #textInput  (keyup)="searchByAll(textInput.value)">
 </div>
 
-<table cdk-table [dataSource]="users" >
-	<ng-container cdkColumnDef="id">
-		<th *cdkHeaderCellDef mat-sort-header>id</th>
-		<td *cdkCellDef="let row"> {{row.id}} </td>
-	</ng-container>
+<section class="mx-4 border border-gray-100  rounded-t-xl  overflow-hidden" >
+  <table cdk-table [dataSource]="users" >
+    <ng-container cdkColumnDef="id">
+      <th class="bg-gray-100" *cdkHeaderCellDef mat-sort-header>id</th>
+      <td *cdkCellDef="let row" class=" text-center "> {{row.id}} </td>
+    </ng-container>
 
-	<ng-container cdkColumnDef="fullName">
-		<th *cdkHeaderCellDef>fullName</th>
-		<td *cdkCellDef="let row">
-			<div >{{row.fullName}}</div>
-		</td>
-	</ng-container>
+    <ng-container cdkColumnDef="fullName">
+      <th class="bg-gray-100" *cdkHeaderCellDef>FullName</th>
+      <td *cdkCellDef="let row">
+        <div >{{row.fullName}}</div>
+      </td>
+    </ng-container>
 
-	<ng-container cdkColumnDef="email">
-		<th *cdkHeaderCellDef>email</th>
-		<td *cdkCellDef="let row">
-			<div >{{row.email}}</div>
-		</td>
+    <ng-container cdkColumnDef="email">
+      <th class="bg-gray-100" *cdkHeaderCellDef>email</th>
+      <td *cdkCellDef="let row">
+        <div >{{row.email}}</div>
+      </td>
 
-	</ng-container>
-	<ng-container cdkColumnDef="website">
-		<th *cdkHeaderCellDef>website</th>
-		<td *cdkCellDef="let row">
-			<div>{{row.website}}</div>
-		</td>
-	</ng-container>
+    </ng-container>
+    <ng-container cdkColumnDef="website">
+      <th class="bg-gray-100" *cdkHeaderCellDef>website</th>
+      <td *cdkCellDef="let row">
+        <div>{{row.website}}</div>
+      </td>
+    </ng-container>
 
-	<ng-container cdkColumnDef="nodata">
-		<cdk-footer-cell *cdkFooterCellDef [attr.colspan]="columnsToDisplay.length" style="justify-content: center;">No
-			Data
-			Available</cdk-footer-cell>
-	</ng-container>
+    <tr class="mat-row" *cdkNoDataRow>
+      <td colspan="4">
+        No data
+      </td>
+    </tr>
 
-	<tr cdk-header-row *cdkHeaderRowDef="columnsToDisplay"></tr>
-	<tr cdk-row  *cdkRowDef="let element; columns: columnsToDisplay;"></tr>
+    <tr cdk-header-row *cdkHeaderRowDef="columnsToDisplay"></tr>
+    <tr cdk-row  *cdkRowDef="let element; columns: columnsToDisplay;"></tr>
 
-</table>
-
+  </table>
+</section>
 <app-paginator
   #pagination
   [pageSize]="pageSize"

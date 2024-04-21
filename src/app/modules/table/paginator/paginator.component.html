@@ -1,40 +1,47 @@
-<ul class="flex  gap-4 items-center">
-  <li class="link" [ngClass]="{ 'disabled': pageIndex === 0 }" *ngIf="getNumberOfPages() > 1">
-    <button (click)="pageIndex > 0 && previousPage()" class="page-link prev-page">
+<section class="flex justify-end border border-x-gray-100 border-t-0 rounded-b-xl mx-4 py-2 ">
+  <ul class="flex  gap-4 items-center  mr-1">
 
-      <svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24"
-        fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000">
-        <path d="M6 7V17" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-        <path
-          d="M17.0282 5.2672C17.4217 4.95657 18 5.23682 18 5.73813V18.2619C18 18.7632 17.4217 19.0434 17.0282 18.7328L9.09651 12.4709C8.79223 12.2307 8.79223 11.7693 9.09651 11.5291L17.0282 5.2672Z"
-          stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-      </svg>
-    </button>
-  </li>
-
-  <ng-container *ngFor="let pageNum of fetchPageNumbers() | fetchPages">
-
-    <li class="link" *ngIf="pageNum.page === false && pageNum.value === LEFT_PAGE">
-      <a class="page-link ellipsis">...</a>
-    </li>
-    <li [ngClass]="{'active': pageNum.value -1  === pageIndex }" *ngIf="pageNum.page === true">
-      <a (click)="setPage(pageNum.value -1 )" class="page-link"> {{pageNum.value }}</a>
+    <li class="link flex items-center" [ngClass]="{ 'disabled': pageIndex === 0 }" *ngIf="getNumberOfPages() > 1">
+      <button (click)="pageIndex > 0 && previousPage()" class="page-link prev-page">
+        <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+          color="#000000" stroke-width="1.5">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M12 1.25C6.06294 1.25 1.25 6.06294 1.25 12C1.25 17.9371 6.06294 22.75 12 22.75C17.9371 22.75 22.75 17.9371 22.75 12C22.75 6.06294 17.9371 1.25 12 1.25ZM10.9697 16.0303L7.46967 12.5303C7.17678 12.2374 7.17678 11.7626 7.46967 11.4697L10.9697 7.96967C11.2626 7.67678 11.7374 7.67678 12.0303 7.96967C12.3232 8.26256 12.3232 8.73744 12.0303 9.03033L9.81066 11.25H16C16.4142 11.25 16.75 11.5858 16.75 12C16.75 12.4142 16.4142 12.75 16 12.75H9.81066L12.0303 14.9697C12.3232 15.2626 12.3232 15.7374 12.0303 16.0303C11.7374 16.3232 11.2626 16.3232 10.9697 16.0303Z"
+            fill="#000000"></path>
+        </svg>
+      </button>
     </li>
 
-    <li class="link" *ngIf="pageNum.page === false && pageNum.value === RIGHT_PAGE">
-      <a class="page-link ellipsis">...</a>
-    </li>
-  </ng-container>
+    <li class="flex items-center gap-1">
 
-  <li class="link" *ngIf="hasNextPage()">
-    <button (click)="nextPage()" class="page-link next-page">
-      <svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24"
-        fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000">
-        <path d="M18 7V17" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-        <path
-          d="M6.97179 5.2672C6.57832 4.95657 6 5.23682 6 5.73813V18.2619C6 18.7632 6.57832 19.0434 6.97179 18.7328L14.9035 12.4709C15.2078 12.2307 15.2078 11.7693 14.9035 11.5291L6.97179 5.2672Z"
-          stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-      </svg>
-    </button>
-  </li>
-</ul>
+      <ng-container *ngFor="let pageNum of fetchPageNumbers() | fetchPages">
+        <div class="link" *ngIf="pageNum.page === false && pageNum.value === LEFT_PAGE">
+          <a class="page-link ellipsis">...</a>
+        </div>
+
+        <button *ngIf="pageNum.page === true"
+          [ngClass]="{'active bg-gray-200 overflow-hidden': pageNum.value -1  === pageIndex }"
+          (click)="setPage(pageNum.value -1 )" class="page-link rounded-full border  w-8 h-8 text-sm  border-gray-100">
+          {{pageNum.value }}
+        </button>
+
+        <div class="link" *ngIf="pageNum.page === false && pageNum.value === RIGHT_PAGE">
+          <a class="page-link ellipsis">...</a>
+        </div>
+      </ng-container>
+    </li>
+
+    <li class="link flex items-center" *ngIf="hasNextPage()">
+      <button (click)="nextPage()" class="page-link next-page">
+        <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+          color="#000000" stroke-width="1.5">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M12 1.25C6.06294 1.25 1.25 6.06294 1.25 12C1.25 17.9371 6.06294 22.75 12 22.75C17.9371 22.75 22.75 17.9371 22.75 12C22.75 6.06294 17.9371 1.25 12 1.25ZM13.0303 7.96967L16.5303 11.4697C16.8232 11.7626 16.8232 12.2374 16.5303 12.5303L13.0303 16.0303C12.7374 16.3232 12.2626 16.3232 11.9697 16.0303C11.6768 15.7374 11.6768 15.2626 11.9697 14.9697L14.1893 12.75H8C7.58579 12.75 7.25 12.4142 7.25 12C7.25 11.5858 7.58579 11.25 8 11.25H14.1893L11.9697 9.03033C11.6768 8.73744 11.6768 8.26256 11.9697 7.96967C12.2626 7.67678 12.7374 7.67678 13.0303 7.96967Z"
+            fill="#000000"></path>
+        </svg>
+      </button>
+    </li>
+
+  </ul>
+
+</section>
