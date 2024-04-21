@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { CdkTableModule } from "@angular/cdk/table";
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { LayoutComponent } from './layout/layout.component';
 
 const routes: Routes = [
   {
     path: 'table',
+    pathMatch: 'full',
     loadChildren: () => import('./modules/table/table.module').then(m => m.TableModule)
   },
 ];
@@ -18,6 +19,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    LayoutComponent,
     FormsModule,
     RouterModule.forRoot(routes)
   ],
