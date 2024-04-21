@@ -1,0 +1,46 @@
+<div class="border px-4 py-2 m-4 w-fit" >
+  <input type="text" placeholder="Search by all"  #textInput  (keyup)="searchByAll(textInput.value)">
+</div>
+
+<table cdk-table [dataSource]="users" >
+	<ng-container cdkColumnDef="id">
+		<th *cdkHeaderCellDef mat-sort-header>id</th>
+		<td *cdkCellDef="let row"> {{row.id}} </td>
+	</ng-container>
+
+	<ng-container cdkColumnDef="fullName">
+		<th *cdkHeaderCellDef>fullName</th>
+		<td *cdkCellDef="let row">
+			<div >{{row.fullName}}</div>
+		</td>
+	</ng-container>
+
+	<ng-container cdkColumnDef="email">
+		<th *cdkHeaderCellDef>email</th>
+		<td *cdkCellDef="let row">
+			<div >{{row.email}}</div>
+		</td>
+
+	</ng-container>
+	<ng-container cdkColumnDef="website">
+		<th *cdkHeaderCellDef>website</th>
+		<td *cdkCellDef="let row">
+			<div>{{row.website}}</div>
+		</td>
+	</ng-container>
+
+	<ng-container cdkColumnDef="nodata">
+		<cdk-footer-cell *cdkFooterCellDef [attr.colspan]="columnsToDisplay.length" style="justify-content: center;">No
+			Data
+			Available</cdk-footer-cell>
+	</ng-container>
+
+	<tr cdk-header-row *cdkHeaderRowDef="columnsToDisplay"></tr>
+	<tr cdk-row  *cdkRowDef="let element; columns: columnsToDisplay;"></tr>
+
+</table>
+
+<app-paginator
+  #pagination
+  [pageSize]="pageSize"
+></app-paginator>

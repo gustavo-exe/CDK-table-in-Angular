@@ -1,0 +1,40 @@
+<ul class="flex  gap-4 items-center">
+  <li class="link" [ngClass]="{ 'disabled': pageIndex === 0 }" *ngIf="getNumberOfPages() > 1">
+    <button (click)="pageIndex > 0 && previousPage()" class="page-link prev-page">
+
+      <svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24"
+        fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000">
+        <path d="M6 7V17" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path
+          d="M17.0282 5.2672C17.4217 4.95657 18 5.23682 18 5.73813V18.2619C18 18.7632 17.4217 19.0434 17.0282 18.7328L9.09651 12.4709C8.79223 12.2307 8.79223 11.7693 9.09651 11.5291L17.0282 5.2672Z"
+          stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </button>
+  </li>
+
+  <ng-container *ngFor="let pageNum of fetchPageNumbers() | fetchPages">
+
+    <li class="link" *ngIf="pageNum.page === false && pageNum.value === LEFT_PAGE">
+      <a class="page-link ellipsis">...</a>
+    </li>
+    <li [ngClass]="{'active': pageNum.value -1  === pageIndex }" *ngIf="pageNum.page === true">
+      <a (click)="setPage(pageNum.value -1 )" class="page-link"> {{pageNum.value }}</a>
+    </li>
+
+    <li class="link" *ngIf="pageNum.page === false && pageNum.value === RIGHT_PAGE">
+      <a class="page-link ellipsis">...</a>
+    </li>
+  </ng-container>
+
+  <li class="link" *ngIf="hasNextPage()">
+    <button (click)="nextPage()" class="page-link next-page">
+      <svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24"
+        fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000">
+        <path d="M18 7V17" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path
+          d="M6.97179 5.2672C6.57832 4.95657 6 5.23682 6 5.73813V18.2619C6 18.7632 6.57832 19.0434 6.97179 18.7328L14.9035 12.4709C15.2078 12.2307 15.2078 11.7693 14.9035 11.5291L6.97179 5.2672Z"
+          stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </button>
+  </li>
+</ul>

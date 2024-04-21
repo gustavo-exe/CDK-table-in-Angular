@@ -3,7 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CdkTableModule } from "@angular/cdk/table";
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-import { PaginatorModule } from './shared/paginator/paginator.module';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+  {
+    path: 'table',
+    loadChildren: () => import('./modules/table/table.module').then(m => m.TableModule)
+  },
+];
 
 @NgModule({
   declarations: [
@@ -12,8 +19,7 @@ import { PaginatorModule } from './shared/paginator/paginator.module';
   imports: [
     BrowserModule,
     FormsModule,
-    CdkTableModule,
-    PaginatorModule
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

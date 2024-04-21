@@ -148,5 +148,80 @@
     "phone": "555 000 111",
     "website": "jackdavis.com",
     "registrationDate": "Tue Nov 10 2022 14:45:00 GMT+0000 (UTC)"
+  },
+  {
+    "id": 20,
+    "isActive": true,
+    "name": {
+      "first": "John",
+      "last": "Doe"
+    },
+    "fullName": "John Doe",
+    "email": "john.doe@example.com",
+    "city": "New York",
+    "zipcode": "10001",
+    "phone": "555 222 333",
+    "website": "johndoe.com",
+    "registrationDate": "Wed Nov 02 2022 12:30:00 GMT+0000 (UTC)"
+  },
+  {
+    "id": 21,
+    "isActive": false,
+    "name": {
+      "first": "Emily",
+      "last": "Smith"
+    },
+    "fullName": "Emily Smith",
+    "email": "emily.smith@example.com",
+    "city": "Los Angeles",
+    "zipcode": "90001",
+    "phone": "555 333 444",
+    "website": "emilysmith.com",
+    "registrationDate": "Thu Nov 03 2022 12:30:00 GMT+0000 (UTC)"
+  },
+  {
+    "id": 22,
+    "isActive": true,
+    "name": {
+      "first": "Michael",
+      "last": "Brown"
+    },
+    "fullName": "Michael Brown",
+    "email": "michael.brown@example.com",
+    "city": "Chicago",
+    "zipcode": "60007",
+    "phone": "555 444 555",
+    "website": "michaelbrown.com",
+    "registrationDate": "Fri Nov 04 2022 12:30:00 GMT+0000 (UTC)"
+  },
+  {
+    "id": 23,
+    "isActive": true,
+    "name": {
+      "first": "Emma",
+      "last": "Wilson"
+    },
+    "fullName": "Emma Wilson",
+    "email": "emma.wilson@example.com",
+    "city": "Houston",
+    "zipcode": "77001",
+    "phone": "555 555 666",
+    "website": "emmawilson.com",
+    "registrationDate": "Sat Nov 05 2022 12:30:00 GMT+0000 (UTC)"
+  },
+  {
+    "id": 24,
+    "isActive": false,
+    "name": {
+      "first": "Daniel",
+      "last": "Martinez"
+    },
+    "fullName": "Daniel Martinez",
+    "email": "daniel.martinez@example.com",
+    "city": "Miami",
+    "zipcode": "33101",
+    "phone": "555 666 777",
+    "website": "danielmartinez.com",
+    "registrationDate": "Sun Nov 06 2022 12:30:00 GMT+0000 (UTC)"
   }
 ]
