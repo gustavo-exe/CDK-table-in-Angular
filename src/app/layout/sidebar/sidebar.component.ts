@@ -25,10 +25,16 @@ import { filter } from 'rxjs';
 export class SidebarComponent {
 
   ruta: string = '';
-  rutas = [{
-    path: 'table',
-    title: 'Table'
-  }]
+  rutas = [
+    {
+      path: 'table',
+      title: 'Table'
+    },
+    {
+      path: 'select-auto-complete',
+      title: 'Select auto complete'
+    }
+  ]
 
   constructor(private router: Router) {
     router.events.pipe(

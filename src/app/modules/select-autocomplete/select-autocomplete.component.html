@@ -1,0 +1,20 @@
+<form [formGroup]="formAutComplete" class="p-4" >
+  <p class=" mb-3 font-extrabold text-2xl" >Autocomplete</p>
+  <div class="border-gray-400 border rounded-lg px-2 py-3">
+    <input class="outline-none" placeholder="Search..." formControlName="label" [appAutocomplete]="autocomplete">
+  </div>
+
+  <app-autocomplete #autocomplete="appAutocomplete">
+    <ng-template appAutocompleteContent>
+      <ng-container>
+        <app-option *ngFor="let option of countries"
+        [value]="option.label">
+        <span [class]="'fi fi-' + option.alphacode"></span>
+
+          {{ option.label }}
+        </app-option>
+
+      </ng-container>
+    </ng-template>
+  </app-autocomplete>
+</form>

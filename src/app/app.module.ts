@@ -11,6 +11,11 @@ const routes: Routes = [
     pathMatch: 'full',
     loadChildren: () => import('./modules/table/table.module').then(m => m.TableModule)
   },
+  {
+      path: 'select-auto-complete',
+      pathMatch: 'full',
+      loadChildren: () => import('./modules/select-autocomplete/select-autocomplete.module').then(m => m.SelectAutocompleteModule)
+  }
 ];
 
 @NgModule({
